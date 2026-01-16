@@ -55,7 +55,7 @@ class BeerRepositoryImplTest {
         assertEquals(beerDto.tagline, actual.tagline)
         assertEquals(beerDto.firstBrewed, actual.firstBrewed)
         assertEquals(beerDto.description, actual.description)
-        assertEquals("/images/${beerDto.imageId}", actual.imageUrl)
+        assertEquals("https://punkapi-alxiw.amvera.io/v3/images/${beerDto.imageId}", actual.imageUrl)
         assertEquals(beerDto.abv, actual.abv)
         assertEquals(beerDto.ibu, actual.ibu)
         assertEquals(beerDto.targetFg, actual.targetFG)

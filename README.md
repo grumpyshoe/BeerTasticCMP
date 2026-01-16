@@ -107,7 +107,7 @@ You can now explore the app on an emulator or physical device (API level 26+).
 ---
 ### 🧪 Run unit tests
 ```bash
-./gradlew test
+./gradlew allTest --info --stacktrace
 ```
 
 ---

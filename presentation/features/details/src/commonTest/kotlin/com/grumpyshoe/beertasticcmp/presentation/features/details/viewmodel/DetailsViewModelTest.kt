@@ -3,13 +3,12 @@ package com.grumpyshoe.beertasticcmp.presentation.features.details.viewmodel
 import com.grumpyshoe.beertasticcmp.domain.beer.usecase.SetIsBeerFavorite
 import com.grumpyshoe.beertasticcmp.domain.beer.utils.ApiError
 import com.grumpyshoe.beertasticcmp.domain.beer.utils.ApiSuccess
-import com.grumpyshoe.beertasticcmp.presentation.features.details.ui.state.DetailsViewState
 import com.grumpyshoe.beertasticcmp.testing.fakes.domain.models.fakeBeer
 import com.grumpyshoe.beertasticcmp.testing.fakes.domain.usecase.FakeGetBeerById
 import com.grumpyshoe.beertasticcmp.testing.fakes.domain.usecase.FakeIsBeerFavorite
 import com.grumpyshoe.beertasticcmp.testing.fakes.domain.usecase.FakeSetIsBeerFavorite
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.lastOrNull
+import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -67,8 +66,8 @@ class DetailsViewModelTest {
         initViewModel()
 
         // check assertions
-        val actual = runBlocking { sut.viewState.take(1).lastOrNull() }
-        assertTrue(actual is DetailsViewState.DataLoaded)
+        val actual = runBlocking { sut.viewState.take(1).last() }
+        assertTrue(actual.beerDetails != null)
     }
 
     @Test
@@ -80,8 +79,8 @@ class DetailsViewModelTest {
         initViewModel()
 
         // check assertions
-        val actual = runBlocking { sut.viewState.take(1).lastOrNull() }
-        assertTrue(actual is DetailsViewState.Error)
+        val actual = runBlocking { sut.viewState.take(1).last() }
+        assertTrue(actual.hasError)
     }
 
     @Test
@@ -93,9 +92,8 @@ class DetailsViewModelTest {
         initViewModel()
 
         // check assertions
-        val actual = runBlocking { sut.viewState.take(1).lastOrNull() }
-        val isFavorite = (actual as DetailsViewState.DataLoaded).isFavorite
-        assertFalse(isFavorite)
+        val actual = runBlocking { sut.viewState.take(1).last() }
+        assertFalse(actual.isFavorite)
     }
 
     @Test
@@ -107,8 +105,7 @@ class DetailsViewModelTest {
         initViewModel()
 
         // check assertions
-        val actual = runBlocking { sut.viewState.take(1).lastOrNull() }
-        val isFavorite = (actual as DetailsViewState.DataLoaded).isFavorite
-        assertTrue(isFavorite)
+        val actual = runBlocking { sut.viewState.take(1).last() }
+        assertTrue(actual.isFavorite)
     }
 }
