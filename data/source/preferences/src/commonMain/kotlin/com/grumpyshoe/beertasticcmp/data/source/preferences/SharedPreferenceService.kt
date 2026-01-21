@@ -72,12 +72,6 @@ class PreferenceServiceImpl(
         storage.edit { pref ->
             pref[KEY_FAVORITES] = updatedList.joinToString(separator = ",")
         }
-//        encryptedSharedPrefs.edit().apply {
-//            putString(
-//                SharedPreferenceService.KEY_FAVORITES,
-//                updatedList.joinToString(separator = ",")
-//            )
-//        }.commit()
         _favorites.tryEmit(updatedList)
     }
 
@@ -99,24 +93,3 @@ class PreferenceServiceImpl(
         private val KEY_FAVORITES = stringPreferencesKey(SharedPreferenceService.KEY_FAVORITES)
     }
 }
-
-//
-//import kotlinx.coroutines.flow.StateFlow
-//
-//interface SharedPreferenceService {
-//    suspend fun checkIfFavorite(beerId: Int): Boolean
-//
-//    suspend fun setIsBeerFavorite(beerId: Int, isFavorite: Boolean)
-//
-//    val favorites: StateFlow<List<Int>>
-//
-//    companion object {
-//        const val KEY_FAVORITES = "favorites"
-//    }
-//}
-//
-//expect class PreferenceServiceImpl : SharedPreferenceService {
-//    override suspend fun checkIfFavorite(beerId: Int): Boolean
-//    override suspend fun setIsBeerFavorite(beerId: Int, isFavorite: Boolean)
-//    override val favorites: StateFlow<List<Int>>
-//}
