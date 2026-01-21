@@ -5,7 +5,7 @@ import com.grumpyshoe.beertasticcmp.data.source.network.beer.datasource.BeerRemo
 import com.grumpyshoe.beertasticcmp.data.source.network.beer.datasource.BeerRemoteDatasourceImpl
 import org.koin.dsl.module
 
-internal val BeerNetworkModule =
+internal val beerNetworkModule =
     module {
 
         single<PunkAPI> { PunkAPI() }

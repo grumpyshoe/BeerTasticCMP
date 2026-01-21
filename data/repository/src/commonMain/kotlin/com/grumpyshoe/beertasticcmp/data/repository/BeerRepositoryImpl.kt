@@ -84,7 +84,7 @@ internal fun BeerDto.toBeer(): Beer? {
                 contributedBy = contributedBy,
             )
         } catch (e: Exception) {
-//            Log.e("Parser Error", e.localizedMessage, e) // TC-TODO: Log this error
+            println("Parser Error: ${e.message}")
             return null
         }
     }
@@ -98,7 +98,7 @@ internal fun VolumeDto.toVolume(): Volume? {
                 unit = unit!!,
             )
         } catch (e: Exception) {
-//            Log.e("Parser Error", e.localizedMessage, e)// TC-TODO: Log this error
+            println("Parser Error: ${e.message}")
             return null
         }
     }
@@ -122,7 +122,7 @@ internal fun MethodDto.toMethod(): Method? {
                 twist = twist,
             )
         } catch (e: Exception) {
-//            Log.e("Parser Error", e.localizedMessage, e)// TC-TODO: Log this error
+            println("Parser Error: ${e.message}")
             return null
         }
     }
@@ -140,7 +140,7 @@ internal fun MethodItemDto.toMethodItem(): MethodItem? {
                 duration = duration,
             )
         } catch (e: Exception) {
-//            Log.e("Parser Error", e.localizedMessage, e)// TC-TODO: Log this error
+            println("Parser Error: ${e.message}")
             return null
         }
     }
@@ -161,7 +161,7 @@ internal fun IngredientsDto.toIngredients(): Ingredients? {
                 yeast = yeast,
             )
         } catch (e: Exception) {
-//            Log.e("Parser Error", e.localizedMessage, e)// TC-TODO: Log this error
+            println("Parser Error: ${e.message}")
             return null
         }
     }
@@ -181,7 +181,7 @@ internal fun IngredientsItemDto.toIngredientsItem(): IngredientsItem? {
                 attribute = attribute,
             )
         } catch (e: Exception) {
-//            Log.e("Parser Error", e.localizedMessage, e)// TC-TODO: Log this error
+            println("Parser Error: ${e.message}")
             return null
         }
     }

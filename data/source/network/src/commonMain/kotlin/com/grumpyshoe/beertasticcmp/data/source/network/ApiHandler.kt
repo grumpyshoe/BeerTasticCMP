@@ -15,9 +15,8 @@ suspend inline fun <reified T> handleApi(execute: () -> HttpResponse): ApiResult
         ApiSuccess(body ?: Unit as T)
     } else {
         try {
-//            val errorBody = response.bodyAsText()
             val code =
-                response.status.value//JsonObject(errorBody).getJSONObject("error").getInt("code")
+                response.status.value
             ApiError("ErrorCode = $code")
         } catch (e: Exception) {
             ApiError(e.message)

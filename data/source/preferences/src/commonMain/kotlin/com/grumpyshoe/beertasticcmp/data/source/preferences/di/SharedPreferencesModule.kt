@@ -16,19 +16,3 @@ val sharedPreferencesModule: Module = module {
         PreferenceServiceImpl(get(), get())
     }
 }
-//expect val sharedPreferencesModule: Module
-
-// SharedPreferencesModule =
-//    module {
-//
-//        single<SharedPreferences> {
-//            val masterKey = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
-//            EncryptedSharedPreferences.create(
-//                androidContext().packageName + "_secure_preferences",
-//                masterKey,
-//                androidContext(),
-//                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-//                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM,
-//            )
-//        }
-//    }
